@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="autoterminal",
-    version="0.1.0",
+    version="0.1.1",
     description="智能终端工具，基于LLM将自然语言转换为终端命令(create by claude 4 sonnet)",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",

@@ -1,6 +1,6 @@
 import os
 import json
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 
 class ConfigLoader:
     """配置加载器，支持从文件加载配置"""

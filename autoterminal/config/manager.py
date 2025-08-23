@@ -20,7 +20,8 @@ class ConfigManager:
         self.default_config = {
             'base_url': 'https://api.openai.com/v1',
             'model': 'gpt-4o',
-            'default_prompt': '你现在是一个终端助手,用户输入想要生成的命令,你来输出一个命令,不要任何多余的文本!'
+            'default_prompt': '你现在是一个终端助手,用户输入想要生成的命令,你来输出一个命令,不要任何多余的文本!',
+            'max_history': 10
         }
     
     def save_config(self, config: Dict[str, Any]) -> bool:
@@ -51,21 +52,40 @@ class ConfigManager:
         config = self.default_config.copy()
         
         # 获取API密钥
-        api_key = input("请输入您的API密钥: ").strip()
-        if not api_key:
-            print("错误: API密钥不能为空")
+        try:
+            api_key = input("请输入您的API密钥: ").strip()
+            if not api_key:
+                print("错误: API密钥不能为空")
+                return {}
+            config['api_key'] = api_key
+        except EOFError:
+            print("\n配置向导已取消。")
             return {}
-        config['api_key'] = api_key
+        except Exception as e:
+            print(f"错误: 无法读取API密钥输入: {e}")
+            return {}
         
         # 获取Base URL
-        base_url = input(f"请输入Base URL (默认: {self.default_config['base_url']}): ").strip()
-        if base_url:
-            config['base_url'] = base_url
+        try:
+            base_url = input(f"请输入Base URL (默认: {self.default_config['base_url']}): ").strip()
+            if base_url:
+                config['base_url'] = base_url
+        except EOFError:
+            print("\n配置向导已取消。")
+            return {}
+        except Exception as e:
+            print(f"警告: 无法读取Base URL输入: {e}")
         
         # 获取模型名称
-        model = input(f"请输入模型名称 (默认: {self.default_config['model']}): ").strip()
-        if model:
-            config['model'] = model
+        try:
+            model = input(f"请输入模型名称 (默认: {self.default_config['model']}): ").strip()
+            if model:
+                config['model'] = model
+        except EOFError:
+            print("\n配置向导已取消。")
+            return {}
+        except Exception as e:
+            print(f"警告: 无法读取模型名称输入: {e}")
         
         # 保存配置
         if self.save_config(config):

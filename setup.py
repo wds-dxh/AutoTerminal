@@ -8,7 +8,7 @@ setup(
     long_description_content_type="text/markdown",
     author="wds",
     author_email="wdsnpshy@163.com",
-    url="https://github.com/wds-dxh/autoterminal",
+    url="http://cloud-home.dxh-wds.top:20100/w/AutoTerminal",
     license="MIT",
     packages=find_packages(),
     install_requires=[

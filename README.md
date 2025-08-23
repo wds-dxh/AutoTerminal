@@ -9,6 +9,8 @@ AutoTerminal 是一个基于大语言模型的智能终端工具，可以将自�
 - ⚙️ 灵活的配置管理
 - 🌍 中文支持
 - 🔄 支持多种LLM模型
+- 📚 命令历史记录和上下文感知
+- 📁 当前目录内容上下文感知
 
 ## 安装
 
@@ -50,6 +52,10 @@ sudo pip install .
 
 配置信息会保存在 `config.json` 文件中。
 
+### 配置选项
+
+- `max_history`: 历史命令记录数量（默认：10）
+
 ## 使用方法
 
 ### 方法1：使用uv run
@@ -61,6 +67,11 @@ uv run python autoterminal/main.py "查看当前目录下的所有文件"
 ```bash
 uv pip install -e .
 at "查看当前目录下的所有文件"
+```
+
+### 使用历史命令上下文
+```bash
+at --history-count 5 "基于前面的命令，删除所有.txt文件"
 ```
 
 程序会生成终端命令并显示提示，用户按回车后程序会直接执行该命令。
@@ -92,6 +103,9 @@ autoterminal/
 ├── llm/                    # LLM相关模块
 │   ├── __init__.py         # 包初始化文件
 │   └── client.py           # LLM客户端
+├── history/                # 历史命令管理模块
+│   ├── __init__.py         # 包初始化文件
+│   └── history.py          # 历史命令管理器
 ├── utils/                  # 工具函数
 │   ├── __init__.py         # 包初始化文件
 │   └── helpers.py          # 辅助函数

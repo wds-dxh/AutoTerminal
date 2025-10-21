@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "autoterminal"
-version = "0.1.1"
+version = "1.0.1"
 description = "智能终端工具，基于LLM将自然语言转换为终端命令(create by claude 4 sonnet)"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -13,9 +13,9 @@ authors = [
     {name = "wds2dxh", email = "wdsnpshy@163.com"}
 ]
 license = {text = "MIT"}
-keywords = ["terminal", "ai", "llm", "command-line", "automation"]
-classifiers = [
-    "Development Status :: 4 - Beta",
+keywords = ["terminal", "ai", "llm", "command-line", "automation", "autoterminal"]
+classifiers = [ 
+    "Development Status :: 6 - Mature",
     "Intended Audience :: Developers",
     "Intended Audience :: System Administrators",
     "License :: OSI Approved :: MIT License",
@@ -28,7 +28,8 @@ classifiers = [
     "Topic :: Utilities",
 ]
 dependencies = [
-    "openai>=1.0.0"
+    "openai>=1.0.0",
+    "loguru>=0.7.0"
 ]
 
 [project.urls]

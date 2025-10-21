@@ -1,0 +1,32 @@
+name: Sync to Gitea
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync-to-gitea:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Fetch all history for all branches and tags
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Action wds"
+          git config --global user.email "wdsnpshy@163.com"
+
+      - name: Add Gitea remote with authentication
+        run: |
+          git remote add gitea https://${{ secrets.GITEA_USER }}:${{ secrets.GITEA_PASSWORD }}@cloud-home.dxh-wds.top:20110/w/AutoTerminal.git
+
+      - name: Push all branches to Gitea
+        run: |
+          git push gitea main --force
+
+      - name: Push tags to Gitea
+        run: |
+          git push gitea --tags --force

@@ -33,9 +33,12 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "http://cloud-home.dxh-wds.top:20100/w/autoterminal"
-Repository = "http://cloud-home.dxh-wds.top:20100/w/autoterminal"
-Issues = "http://cloud-home.dxh-wds.top:20100/w/autoterminal/issues"
+Homepage = "https://github.com/wds-dxh/AutoTerminal.git"
+Repository = "https://github.com/wds-dxh/AutoTerminal.git"
+Issues = "https://github.com/wds-dxh/AutoTerminal/issues"
+# Homepage = "http://cloud-home.dxh-wds.top:20100/w/autoterminal"
+# Repository = "http://cloud-home.dxh-wds.top:20100/w/autoterminal"
+# Issues = "http://cloud-home.dxh-wds.top:20100/w/autoterminal/issues"
 
 [project.scripts]
 at = "autoterminal.main:main"

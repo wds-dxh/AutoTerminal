@@ -1,0 +1,20 @@
+name: Gitea Actions Demo
+# run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
+run-name: ubuntu22-a5000
+on: [push] 
+
+jobs:
+  sync_job:
+    runs-on: a5000
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - run: echo "This is a Gitea Actions demo workflow!"
+      - run: cat .git/config  
+      - run: git remote remove origin || true
+      - run: git remote add origin git@github.com:wds-dxh/AutoTerminal.git 
+      - run: git push  origin main
+
+
+        
